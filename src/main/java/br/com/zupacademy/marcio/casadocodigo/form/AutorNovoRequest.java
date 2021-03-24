@@ -2,11 +2,9 @@ package br.com.zupacademy.marcio.casadocodigo.form;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+
 
 import br.com.zupacademy.marcio.casadocodigo.model.Autor;
-import br.com.zupacademy.marcio.casadocodigo.repository.AutorRepository;
 
 public class AutorNovoRequest {
 	@NotBlank
