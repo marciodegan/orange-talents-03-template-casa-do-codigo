@@ -16,15 +16,15 @@ public class Autor {
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@NotBlank
+	@NotBlank @Column(unique = true, nullable = true)
 	private String nome;
-	@NotBlank @Email @Column(unique = true)
+	@NotBlank @Email @Column(nullable = true)
 	private String email;
 	@NotBlank @Size(max = 400)
 	private String descricao;
 	private LocalDateTime dataCriacao = LocalDateTime.now(); 
 
-	
+	@Deprecated
 	public Autor() {
 	}
 
@@ -34,7 +34,6 @@ public class Autor {
 		this.email = email;
 		this.descricao = descricao;
 	}
-
 
 	@Override
 	public String toString() {

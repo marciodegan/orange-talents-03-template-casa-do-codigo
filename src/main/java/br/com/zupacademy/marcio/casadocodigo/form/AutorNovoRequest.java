@@ -25,7 +25,7 @@ public class AutorNovoRequest {
 	}
 
 	public String getEmail() {
-		return email;
+		return this.email;
 	}
 	
 	

@@ -1,9 +1,11 @@
 package br.com.zupacademy.marcio.casadocodigo.controller;
 
 import javax.validation.Valid;
+import javax.validation.Validator;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,17 +22,22 @@ public class AutoresController {
 
 	@Autowired
 	private AutorRepository autorRepository;
+	@Autowired
+	private ProibeEmailDuplicadoAutorValidator proibeEmailDuplicadoAutorValidator;
 
+	@InitBinder
+	public void init(WebDataBinder binder) {
+		binder.addValidators(proibeEmailDuplicadoAutorValidator);
+	}
+	
 	@PostMapping
 	public String novoAutor(@RequestBody @Valid AutorNovoRequest form) throws Exception {
-
-		Autor autorExisteEmail = autorRepository.findByEmail(form.getEmail());
-		if (autorExisteEmail != null) {
-			throw new InvalidFieldException("Já existe este e-mail cadastrado");
-		} else {
-			Autor autor = form.toModel();
-			autor = autorRepository.save(autor);
-			return autor.toString();
+//		Autor autorExisteEmail = autorRepository.findByEmail(form.getEmail());
+//		if (autorExisteEmail != null) {
+//			throw new InvalidFieldException("Já existe este e-mail cadastrado");
+//		} else {
+		Autor autor = form.toModel();
+		autor = autorRepository.save(autor);
+		return autor.toString();
 		}
 	}
-}
