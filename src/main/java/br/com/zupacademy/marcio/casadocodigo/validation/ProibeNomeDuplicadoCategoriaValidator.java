@@ -29,9 +29,9 @@ public class ProibeNomeDuplicadoCategoriaValidator implements Validator {
 			return;
 		}
 		CategoriaNovaRequest request = (CategoriaNovaRequest) target;
-		Optional<Categoria> possivelAutor = categoriaRepository.findByNome(request.getNome());
+		Optional<Categoria> possivelCategoria = categoriaRepository.findByNome(request.getNome());
 
-		if (possivelAutor.isPresent()) {
+		if (possivelCategoria.isPresent()) {
 			errors.rejectValue("nome", null,
 					"Já existe uma categoria com este nome: " + request.getNome());
 		}
