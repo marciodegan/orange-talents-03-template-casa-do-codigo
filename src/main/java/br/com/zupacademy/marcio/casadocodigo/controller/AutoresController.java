@@ -1,7 +1,6 @@
 package br.com.zupacademy.marcio.casadocodigo.controller;
 
 import javax.validation.Valid;
-import javax.validation.Validator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.WebDataBinder;
@@ -11,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.zupacademy.marcio.casadocodigo.exception.InvalidFieldException;
 import br.com.zupacademy.marcio.casadocodigo.form.AutorNovoRequest;
 import br.com.zupacademy.marcio.casadocodigo.model.Autor;
 import br.com.zupacademy.marcio.casadocodigo.repository.AutorRepository;
+import br.com.zupacademy.marcio.casadocodigo.validation.ProibeEmailDuplicadoAutorValidator;
 
 @RestController
 @RequestMapping("/autores")

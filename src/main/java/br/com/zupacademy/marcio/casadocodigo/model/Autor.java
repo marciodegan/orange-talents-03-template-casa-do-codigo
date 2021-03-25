@@ -16,9 +16,9 @@ public class Autor {
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@NotBlank @Column(unique = true, nullable = true)
+	@NotBlank @Column(nullable = false)
 	private String nome;
-	@NotBlank @Email @Column(nullable = true)
+	@NotBlank @Email @Column(unique=true, nullable = false)
 	private String email;
 	@NotBlank @Size(max = 400)
 	private String descricao;
