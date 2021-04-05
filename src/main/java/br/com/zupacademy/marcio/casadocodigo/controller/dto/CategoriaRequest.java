@@ -1,13 +1,14 @@
 package br.com.zupacademy.marcio.casadocodigo.controller.dto;
 
 import br.com.zupacademy.marcio.casadocodigo.model.Categoria;
+import br.com.zupacademy.marcio.casadocodigo.validation.Unique;
 import br.com.zupacademy.marcio.casadocodigo.validation.UniqueName;
 
 import javax.validation.constraints.NotBlank;
 
 public class CategoriaRequest {
 
-	@NotBlank @UniqueName
+	@NotBlank @Unique
 	private String nome;
 
 	public CategoriaRequest() {

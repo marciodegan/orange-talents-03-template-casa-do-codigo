@@ -5,6 +5,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import br.com.zupacademy.marcio.casadocodigo.model.Autor;
+import br.com.zupacademy.marcio.casadocodigo.validation.Unique;
 import br.com.zupacademy.marcio.casadocodigo.validation.UniqueEmail;
 
 import java.util.Locale;
@@ -13,7 +14,7 @@ import java.util.Locale;
 public class AutorRequest {
 	@NotBlank
 	private String nome;
-	@NotBlank @Email @UniqueEmail
+	@NotBlank @Email @Unique
 	private String email;
 	@NotBlank @Size(max=400)
 	private String descricao;
