@@ -2,18 +2,16 @@ package br.com.zupacademy.marcio.casadocodigo.controller;
 
 import javax.validation.Valid;
 
+import br.com.zupacademy.marcio.casadocodigo.controller.dto.CategoriaResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-import br.com.zupacademy.marcio.casadocodigo.form.CategoriaNovaRequest;
+import br.com.zupacademy.marcio.casadocodigo.controller.dto.CategoriaRequest;
 import br.com.zupacademy.marcio.casadocodigo.model.Categoria;
 import br.com.zupacademy.marcio.casadocodigo.repository.CategoriaRepository;
-import br.com.zupacademy.marcio.casadocodigo.validation.ProibeNomeDuplicadoCategoriaValidator;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/categorias")
@@ -21,19 +19,15 @@ public class CategoriasController {
 	
 	@Autowired
 	private CategoriaRepository categoriaRepository;
-	@Autowired
-	private ProibeNomeDuplicadoCategoriaValidator proibeNomeDuplicadoCategoriaValidator;
 
-	@InitBinder
-	public void init(WebDataBinder binder) {
-		binder.addValidators(proibeNomeDuplicadoCategoriaValidator);
+	@GetMapping
+	public List<Categoria> listar() {
+		return categoriaRepository.findAll();
 	}
-	
+
 	@PostMapping
-	public String novaCategoria(@RequestBody @Valid CategoriaNovaRequest request) throws Exception {
-		Categoria categoria = request.toModel();
-		categoria = categoriaRepository.save(categoria);
-		return categoria.toString();
+	public ResponseEntity<CategoriaResponse> cadastrar(@RequestBody @Valid CategoriaRequest categoriaRequest) {
+		return ResponseEntity.ok(new CategoriaResponse(categoriaRepository.save(categoriaRequest.converter())));
 	}
 
 }
