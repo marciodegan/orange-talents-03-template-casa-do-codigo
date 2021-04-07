@@ -1,16 +1,10 @@
 package br.com.zupacademy.marcio.casadocodigo.controller.dto;
 
-import br.com.zupacademy.marcio.casadocodigo.model.Autor;
-import br.com.zupacademy.marcio.casadocodigo.model.Categoria;
 import br.com.zupacademy.marcio.casadocodigo.model.Livro;
-import br.com.zupacademy.marcio.casadocodigo.validation.MustExist;
-import br.com.zupacademy.marcio.casadocodigo.validation.UniqueValue;
-import org.hibernate.validator.constraints.Length;
 
-import javax.validation.constraints.Future;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class LivroResponse {
 
@@ -34,6 +28,11 @@ public class LivroResponse {
         this.dataPublicacao = livro.getDataPublicacao();
         this.categoriaId = livro.getCategoria().getId();
         this.autorId = livro.getAutor().getId();
+    }
+
+    public static List<LivroResponse> converter(List<Livro> livros) {
+        return livros.stream().map(LivroResponse::new).collect(Collectors.toList());
+
     }
 
 
