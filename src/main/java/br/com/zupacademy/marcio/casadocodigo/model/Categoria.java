@@ -17,6 +17,10 @@ public class Categoria {
 	@Deprecated
 	public Categoria(){
 	}
+	// para Livro - categoriaId
+	public Categoria(Long id) {
+		this.id = id;
+	}
 
 	public Categoria(String nome) {
 		this.id = id;

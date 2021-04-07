@@ -5,11 +5,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import br.com.zupacademy.marcio.casadocodigo.model.Autor;
-import br.com.zupacademy.marcio.casadocodigo.validation.Unique;
-import br.com.zupacademy.marcio.casadocodigo.validation.UniqueEmail;
 import br.com.zupacademy.marcio.casadocodigo.validation.UniqueValue;
-
-import java.util.Locale;
 
 
 public class AutorRequest {

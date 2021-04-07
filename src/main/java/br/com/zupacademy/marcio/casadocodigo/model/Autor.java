@@ -39,25 +39,22 @@ public class Autor {
 		this.descricao = descricao;
 	}
 
+	public Autor(Long id) {
+		this.id = id;
+	}
+
+	// para Livro - autorId
 	public Long getId() {
 		return id;
 	}
 
-	public String getNome() {
-		return nome;
-	}
+	public String getNome() { return nome; }
 
-	public String getEmail() {
-		return email;
-	}
+	public String getEmail() { return email; }
 
-	public String getDescricao() {
-		return descricao;
-	}
+	public String getDescricao() { return descricao; }
 
-	public LocalDateTime getDataCriacao() {
-		return dataCriacao;
-	}
+	public LocalDateTime getDataCriacao() { return dataCriacao; }
 	
 	
 }

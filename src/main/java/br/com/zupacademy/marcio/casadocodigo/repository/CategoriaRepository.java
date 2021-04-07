@@ -14,6 +14,4 @@ public interface CategoriaRepository extends JpaRepository<Categoria, Long> {
 
 	Optional<Categoria> findByNome(String nome);
 
-	@Query(value = "SELECT * FROM Categoria c WHERE c.nome = :nome", nativeQuery = true)
-	List<Categoria> encontraDuplicadoNome(String nome);
 }

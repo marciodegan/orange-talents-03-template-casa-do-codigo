@@ -17,8 +17,11 @@ import java.util.List;
 @RequestMapping("/autores")
 public class AutoresController {
 
-	@Autowired
 	private AutorRepository autorRepository;
+
+	public AutoresController(AutorRepository autorRepository) {
+		this.autorRepository = autorRepository;
+	}
 
 	@GetMapping
 	public List<Autor> listar() {
