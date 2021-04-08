@@ -5,14 +5,14 @@ import br.com.zupacademy.marcio.casadocodigo.validation.MustExist;
 import br.com.zupacademy.marcio.casadocodigo.validation.UniqueValue;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 public class EstadoRequest {
 
-    @NotBlank
-    @UniqueValue(domainClass = Estado.class, fieldName = "nome")
+    @NotBlank @UniqueValue(domainClass = Estado.class, fieldName = "nome")
     private String nome;
 
-    @MustExist(klass= Pais.class)
+    @NotNull @MustExist(klass= Pais.class)
     private Long paisId;
 
     public EstadoRequest() {
