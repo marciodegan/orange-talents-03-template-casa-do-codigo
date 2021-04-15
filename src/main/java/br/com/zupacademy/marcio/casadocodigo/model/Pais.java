@@ -1,6 +1,7 @@
 package br.com.zupacademy.marcio.casadocodigo.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Pais {
@@ -14,11 +15,11 @@ public class Pais {
     public Pais() {
     }
 
-    public Pais(Long id) {
+    public Pais(@NotNull Long id) {
         this.id = id;
     }
 
-    public Pais(String nome) {
+    public Pais(@NotNull String nome) {
         this.nome = nome;
     }
 
