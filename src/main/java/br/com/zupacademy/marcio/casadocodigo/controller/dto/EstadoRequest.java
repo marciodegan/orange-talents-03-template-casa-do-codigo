@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 
 public class EstadoRequest {
 
-    @NotBlank @UniqueValue(domainClass = Estado.class, fieldName = "nome")
+    @NotBlank
     private String nome;
 
     @NotNull @MustExist(klass= Pais.class)
@@ -33,6 +33,6 @@ public class EstadoRequest {
 
     public Estado converter(){
         Pais pais = new Pais(paisId);
-        return new Estado(this.nome, pais);
+        return new Estado(nome, pais);
     }
 }
